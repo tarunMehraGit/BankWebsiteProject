@@ -1,0 +1,91 @@
+<template>
+	<template if:true={loader}>
+		<div class="slds-p-around_x-large">
+			<lightning-spinner alternative-text="Loading..." size="large" variant="brand"></lightning-spinner>
+		</div>
+	</template>
+	<lightning-card variant="Narrow" title="Account List" icon-name="standard:account">
+
+		<div class="slds-m-around_medium">
+			<div class="slds-grid slds-gutters slds-m-around_medium slds-clearfix">
+				<div class="slds-float_left slds-size_1-4">
+					<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+						<lightning-icon size="x-small"
+							class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+							icon-name="utility:search"></lightning-icon>
+						<input type="text" onchange={search} value={searchValue} placeholder="Search Text Here" class="slds-input" />
+                    </div>
+					</div>
+					<div class="slds-col slds-m-top_medium" style="margin-top:1px">
+						<lightning-button label="Search" onclick={doSearch} variant="brand"></lightning-button>
+					</div>
+				</div>
+
+				<table class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols">
+					<thead>
+						<tr>
+							<th>Action</th>
+							<th>Name</th>
+							<th>Phone</th>
+							<th>Rating</th>
+							<th>Email</th>
+							<th>Total Contacts</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template for:each={allAccountList} for:item="account">
+							<tr key={account}>
+								<td>
+									<lightning-button variant="brand" onclick={detailButton} value={account.Id}
+										label="Details" style="padding:4px"></lightning-button>
+									<lightning-button variant="brand" onclick={deleteButton} name={account.Id}
+										label="Delete"></lightning-button>
+								</td>
+								<td>{account.Name}</td>
+								<td>
+									<lightning-formatted-phone value={account.Phone}></lightning-formatted-phone>
+								</td>
+								<td>{account.Rating}</td>
+								<td>
+									<lightning-formatted-email value={account.Email__c}></lightning-formatted-email>
+								</td>
+								<template if:true={account.Contacts}>
+									<td>
+										{account.Contacts.length}
+									</td>
+								</template>
+								<template if:false={account.Contacts}>
+									<td></td>
+								</template>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+				<template if:true={isPopup}>
+					<section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small"
+						aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+						<div class="slds-modal__container">
+							<header class="slds-modal__header">
+								<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModel}>
+                                    <lightning-icon icon-name="utility:close"
+                                        alternative-text="close"
+                                        variant="inverse"
+                                        size="small" ></lightning-icon>
+                                    <span class="slds-assistive-text">Close</span>
+                                </button>
+								<h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Delete Record</h2>
+							</header>
+							<div align="center" class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+								<b>Are you sure you want to delete ?..</b>
+							</div>
+							<footer class="slds-modal__footer">
+								<button class="slds-button slds-button_neutral" onclick={closeModel}>No</button>
+								<button class="slds-button slds-button_brand" onclick={confirm}>Yes</button>
+							</footer>
+						</div>
+					</section>
+					<div class="slds-backdrop slds-backdrop_open"></div>
+				</template>
+			</div>
+	</lightning-card>
+</template>

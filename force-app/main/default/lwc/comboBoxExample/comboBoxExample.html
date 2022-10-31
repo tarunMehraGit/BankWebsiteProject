@@ -1,0 +1,25 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_medium">
+            <lightning-combobox label="Select Country"
+                options = {countryOptions}
+                value = {country}
+                onchange={stateNames}>
+            </lightning-combobox>
+            <lightning-combobox label="Select State"
+                options = {stateOptions}
+                value = {state} 
+                onchange={cityNames}>
+            </lightning-combobox>
+            <lightning-combobox label="Select City"
+                options = {cityOptions}
+             value = {city}
+             onchange={pinCodeName}>
+            </lightning-combobox>
+           
+        </div>
+        <div class="slds-p-around_large" style="padding : top-50px">
+            <p>Pincode : {pinCode}</p>
+        </div>
+    </lightning-card>
+</template>

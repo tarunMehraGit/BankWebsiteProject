@@ -1,0 +1,18 @@
+<template>
+    
+    <lightning-card title="File Upload" icon-name="standard:file">
+        <div class="slds-m-around_medium">
+            <lightning-file-upload type="file" 
+            accept={acceptedFormats}
+            label="Attachment"
+            record-id={recordId}
+            onuploadfinished={openfileUpload}></lightning-file-upload>
+        </div>
+        <!-- <template class="slds-m-around_medium" if:true={fileData}>
+            <p>{fileData.filename}</p>
+        </template> -->
+    
+        <!-- <lightning-button label="Get Details" variant="brand" onclick={loadXMLDoc}></lightning-button> -->
+
+    </lightning-card>
+</template>

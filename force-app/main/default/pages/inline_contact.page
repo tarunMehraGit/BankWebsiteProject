@@ -1,0 +1,57 @@
+<apex:page title="Inline Contact" standardController="Account" extensions="InlineAccountController" tabStyle="Account">
+    <apex:form id="frm">
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+            	 <apex:commandButton value="Save" action="{!save}" styleClass="myClass" />
+            </apex:pageBlockButtons>
+             <apex:variable var="srNo" value="{!0}"/> 
+            <apex:variable var="sr" value="{!0}"/>
+            <apex:actionFunction name="showContact" action="{!showContact}" reRender="frm">
+                  <apex:param name="remove" assignTo="{!firstIndex}" value=""/>
+            </apex:actionFunction>
+                <apex:actionFunction name="showCopyRecord" action="{!showCopyRecord}" reRender="frm">
+                <apex:param name="remove" assignTo="{!secondIndex}" value=""/>
+            </apex:actionFunction>
+            <apex:actionFunction name="showContactHeader" action="{!showContactHeader}"/>
+            <apex:actionFunction name="showCopyHeaderRecord" action="{!showCopyHeaderRecord}"/>
+            <apex:pageBlockSection title="Contact List" collapsible="false">
+                <apex:pageBlockSectionItem >
+                <apex:pageBlockTable value="{!contactWrapperList}" var="wrapperObj">
+                    <apex:column headerValue="#">
+                    <apex:variable var="srNo" value="{!srNo+1}"/>
+                    {!srNo}
+                </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                        	<apex:inputCheckbox value="{!showHeader}" onclick="showContactHeader();"/>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!wrapperObj.isChecked}" onclick="showContact('{!srNo}');" />
+                    </apex:column>
+                    <apex:column value="{!wrapperObj.contact.Name}"></apex:column>
+                </apex:pageBlockTable>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:pageBlockTable value="{!newcontactWrapperList}" var="newWrapper">
+                        <apex:column headerValue="#">
+                            <apex:variable var="sr" value="{!sr+1}"/>
+                            {!sr}
+                        </apex:column>
+                     <apex:column >
+                         <apex:facet name="header">
+                        	<apex:inputCheckbox value="{!showCopyHeader}" onclick="showCopyHeaderRecord();"/>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!newWrapper.copyChecked}" onchange="showCopyRecord('{!sr}');" />
+                    </apex:column>
+                        <apex:column value="{!newWrapper.contact.Name}"></apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    <style type="text/css"> 
+      .myClass {
+      	<!--margin-top: 140px !important;-->
+   		padding: 8px 18px !important;
+       }
+    </style>
+</apex:page>

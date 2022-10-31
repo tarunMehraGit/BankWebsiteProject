@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="Product Bill" icon-name="utility:table">
+    <div class="slds-m-around_medium">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_color-bordered">
+            <thead>
+                <tr>
+
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template if:true={temp}>
+                    <template for:each={details} for:item="info">
+                        <tr key={info}>
+            
+                            <td>{info.Name}</td>
+                            <td>{info.qty}</td>
+                            <td>{info.price}</td>
+                        </tr>
+                    </template>
+
+                    <tr>
+                        <th>
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_3-of-3">
+                                    <span>Grand Total</span>
+                                </div>
+                            </div>
+                        </th>
+                        <td>{totalAmount}</td>
+                    </tr>
+
+                    <lightning-input type="checkbox" label="For Edit Bill" onclick={handleEdit}></lightning-input>
+                </template>    
+                
+            </tbody>
+        </table>
+    </div>
+</lightning-card>
+</template>

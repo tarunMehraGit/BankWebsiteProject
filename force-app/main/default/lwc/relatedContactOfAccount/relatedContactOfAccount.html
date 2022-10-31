@@ -1,0 +1,48 @@
+<template>
+    <lightning-card>
+        <div class="account-heading slds-text-heading_large slds-m-left_medium slds-m-bottom_small">
+            <p>Accounts</p>
+        </div>
+        <div class="slds-m-left_medium slds-m-bottom_medium">
+            <lightning-button variant="brand" label="Expend All" onclick={doExpend}></lightning-button>
+            <lightning-button class="slds-m-left_x-small" variant="brand" label="Collapse All" onclick={doCollapse}>
+            </lightning-button>
+        </div>
+        <table class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols">
+            <thead>
+                <tr>
+                    <th>Account Name</th>
+                    <th>Account Number</th>
+                    <th>Indusdry</th>
+                    <th>Rating</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={accountList} for:item="account">
+                    <tr key={account}>
+                        <td>{account.Name}</td>
+                        <td>{account.AccountNumber}</td>
+                        <td>{account.Industry}</td>
+                        <td>{account.Rating}</td>
+                        <td>{account.Type}</td>
+                    </tr>
+                    <template if:true={isShow}>
+                        <template if:true={account.Contacts} >
+                            <tr key={account} class="account-tbody slds-box slds-theme_shade">
+                                <td>Name</td>
+                                <td>Email</td>
+                            </tr>
+                        </template>
+                        <template for:each={account.Contacts} for:item="contact" >
+                            <tr key={contact} class="slds-box slds-theme_shade">
+                                <td>{contact.Full_Name__c}</td>
+                                <td>{contact.Email}</td>
+                            </tr>
+                        </template>
+                    </template>
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+</template>

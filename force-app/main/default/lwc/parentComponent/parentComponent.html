@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Select Product" class="slds-m-around_medium" icon-name="custom:custom101">
+        
+        <lightning-checkBox-group
+        name="Select Product"
+        label="Select Product "
+        options={options}
+        value={product}
+        onchange={getInformation}
+        class="slds-m-around_medium"></lightning-checkBox-group>
+        <template if:true={details}>
+            <c-child-component all-details={details} onmyevent={getValue}></c-child-component>
+        </template>
+    </lightning-card> 
+</template>

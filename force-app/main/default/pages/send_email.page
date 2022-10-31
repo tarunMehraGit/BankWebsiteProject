@@ -1,0 +1,27 @@
+<apex:page showHeader="false" controller="SendEmailController" title="Send Email">
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:form >
+            <apex:actionFunction name="showhtmlbody"/>
+            <apex:pageBlock >
+                <apex:pageBlockSection columns="1" collapsible="false" title="New Email"> 
+                    <apex:inputText label="To" value="{!toAddress}" required="true"/>
+                    <apex:inputText label="Cc" value="{!ccAddress}"/>
+                    <apex:inputText label="Bcc" value="{!bccAddress}"/>
+                    <apex:inputText label="Subject" value="{!subject}" required="true"/>
+                    <apex:inputTextarea label="Body" value="{!body}" rendered="{!(!isChecked)}"
+                                        style="height:200px;width:500px;resize:none "/>
+                    <apex:inputTextarea label="Body" value="{!body}" rendered="{!isChecked}" richText="true"/>
+                    <apex:inputCheckbox label="HTML Body" value="{!isChecked}" onclick="showhtmlbody();"/>
+                    <apex:commandButton value="Send" action="{!sendEmail}" styleClass="sendButton"/>
+                </apex:pageBlockSection> 
+            </apex:pageBlock>
+        </apex:form>
+        <style type="text/css"> 
+        .sendButton {
+            margin-left: 710px !important;
+    		margin-top: -32px !important;
+            background: blue !important;
+            color: #FFF !important;
+        }
+        </style>
+    </apex:page>

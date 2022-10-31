@@ -1,0 +1,69 @@
+<template>
+    <lightning-card title="Select Product"  class="slds-m-around_medium" icon-name="utility:products">
+    <div class="c-container">
+       <lightning-layout> 
+            <lightning-layout-item >
+                <lightning-combobox
+                    name="Select Product"
+                    label="Select Product"
+                    placeholder="Select Product" 
+                    options={product}
+                    value={Product} 
+                    onchange={handleProduct}
+                    class="slds-m-around_medium">
+                </lightning-combobox> 
+            </lightning-layout-item>
+            <lightning-layout-item>
+                <lightning-combobox
+                    name="Select Quantity"
+                    label="Select Quantity"
+                    placeholder="Select Quantity" 
+                    options={QuantityOptions}
+                    value={quantity} 
+                    onchange={handleQuantity}
+                    class="slds-m-around_medium">
+                </lightning-combobox> 
+            </lightning-layout-item>
+            <lightning-layout-item>
+                <div  class="slds-m-around_medium" >
+                    <lightning-input type=number  value={price} label="Product Price" onchange={handlePrice} ></lightning-input>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+        <div  class="slds-m-around_medium" style="margin-left:75%">
+            <lightning-button variant="brand" label="Add Product" onclick={addProduct}></lightning-button>
+        </div>
+        <template if:true={isDisplay}>
+            <hr/>
+            <lightning-layout> 
+                <lightning-layout-item >
+                    <lightning-combobox
+                        name="Select Product"
+                        placeholder="Select Product" 
+                        options={recieveData}
+                        value={recieveValues.Name} 
+                        class="slds-m-around_medium">
+                    </lightning-combobox> 
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <lightning-combobox
+                        name="Select Quantity"
+                        placeholder="Select Quantity" 
+                        options={recieveData}
+                        value={recieveValues.qty} 
+                        class="slds-m-around_medium">
+                    </lightning-combobox> 
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <div  class="slds-m-around_medium" >
+                        <lightning-input type=number  value={recieveValues.price} label="Product Price" ></lightning-input>
+                    </div>
+                </lightning-layout-item>
+                </lightning-layout>
+                <div  class="slds-m-around_medium" style="margin-left:80%">
+                    <lightning-button variant="brand" label="Submit" ></lightning-button>
+                </div>
+        </template>
+    </lightning-card>
+</template>

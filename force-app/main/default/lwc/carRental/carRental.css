@@ -1,0 +1,31 @@
+.car-Image{
+    background-image: url("https://www.elliott.org/wp-content/uploads/Ultimate-guide-how-to-rent-a-car.jpg");
+    background-repeat: no-repeat;
+    width: 97%;
+    height: 538px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.form{
+    background: #fff;
+    border: 1px solid;
+    border-radius: 5px;
+    width: 380px;
+    height: 350px;
+    margin-top: 100px;
+    position: relative;
+    left: 58em  
+}
+.search-button{
+  
+   cursor: pointer;
+   margin-left: 80px;
+   width: 120px;
+   height: 40px;
+}
+.details{
+    position: relative;
+    margin-top: 10px;
+}

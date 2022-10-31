@@ -1,0 +1,80 @@
+<template>
+
+	<lightning-card variant="Narrow" title="Account Details" icon-name="standard:account">
+		<!------------------------------------------ View Record ---------------------------------->
+		<template if:true={isView}>
+			<lightning-button variant="brand" label="Edit" style="margin-left:80%" onclick={editButton}>
+			</lightning-button>
+			<div class="slds-m-around_medium">
+				<b>Name   : </b> {Name} </br>
+				<b>Phone  : </b>
+				<lightning-formatted-phone value={Phone}></lightning-formatted-phone> <br/>
+				<b>Rating : </b> {Rating} <br/>
+				<b>Email  : </b>
+				<lightning-formatted-email value={Email}></lightning-formatted-email></br>
+                <!-- <b>Total Contacts : </b>{contactLength} -->
+			</div>
+		</template>
+		<template if:true={isView}>
+			<div class="slds-m-around_medium">
+				<h2 class="slds-text-heading_medium slds-m-bottom_xx-small slds-align_absolute-center" >Related Contact</h2>
+				<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_color-bordered" >
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Phone</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template for:each={contactList} for:item="contact">
+							<tr key={contact}>
+								<td>{contact.Name}</td>
+								<td>
+									<lightning-formatted-phone value={contact.Phone}></lightning-formatted-phone>
+								</td>
+								<td>
+									<lightning-formatted-email value={contact.Email}></lightning-formatted-email>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+
+		</template>
+
+		<!------------------------------------------ Update Record ---------------------------------->
+		<template if:true={showModal}>
+			<div class="slds-modal__content slds-p-around_medium">
+				<lightning-layout>
+					<lightning-layout-item padding="around-small">
+						<b>Name</b>
+						<lightning-input class="accountRecord" value={Name}></lightning-input>
+					</lightning-layout-item>
+					<lightning-layout-item padding="around-small">
+						<b>Phone</b>
+						<lightning-input class="accountRecord" value={Phone}></lightning-input>
+					</lightning-layout-item>
+				</lightning-layout>
+				<lightning-layout>
+					<lightning-layout-item padding="around-small">
+						<b>Rating</b>
+						<lightning-combobox class="accountRecord" value={Rating} options={ratingOptions} onchange={handleRating}>
+						</lightning-combobox>
+					</lightning-layout-item>
+					<lightning-layout-item padding="around-small">
+						<b>Email</b>
+						<lightning-input class="accountRecord" value={Email}></lightning-input>
+					</lightning-layout-item>
+				</lightning-layout>
+			</div>
+			<footer class="slds-modal__footer">
+				<lightning-button variant="brand" label="Update" value={Id} class="slds-m-left_x-small"
+					onclick={updateButton}></lightning-button>
+				<lightning-button variant="brand-outline" class="slds-m-left_x-small" label="Cancel"
+					onclick={closeModel}></lightning-button>
+			</footer>
+		</template>
+	</lightning-card>
+</template>

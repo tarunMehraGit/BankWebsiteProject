@@ -1,0 +1,90 @@
+<template>
+    <template if:true={isList}>
+<lightning-card title="Student List Page" icon-name="custom:custom66">
+        <lightning-button variant="Neutral" label="New" onclick={newButton} style="margin-top:-60px;margin-left:90%"></lightning-button>
+    <div class="slds-m-around_medium">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_color-bordered">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={studentList.data} for:item="student">
+                    <tr key={student}>
+                        <td style="padding:2px">
+                            <lightning-button variant="brand-outline" label="View" name={student.Id} onclick={viewButton} style="padding:3px" icon-name="utility:preview" icon-position="right"></lightning-button>
+                            <lightning-button variant="brand-outline" label="Edit" name={student.Id} onclick={editButton} icon-name="utility:edit" icon-position="right"  style="padding:3px"></lightning-button>
+                            <lightning-button variant="brand-outline" label="Delete" name={student.Id} onclick={deleteButton} icon-name="utility:delete" icon-position="right"  style="padding:3px"></lightning-button>
+                            <lightning-button variant="brand-outline" label="Clone" name={student.Id} onclick={cloneButton} icon-name="action:clone" icon-position="right" style="padding:3px"></lightning-button>
+                        </td> 
+                        <td>{student.First_Name__c}</td>
+                        <td>{student.Last_Name__c}</td>
+                        <td><lightning-formatted-phone value={student.Phone__c}></lightning-formatted-phone></td>
+                        <td><lightning-formatted-email value={student.Email__c}></lightning-formatted-email></td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</lightning-card>
+</template>
+<!------------------------------------------ Update & New Record ----------------------------------> 
+<template if:true={showModal}>
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+        <div class="slds-modal__container">
+          <header class="slds-modal__header">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModel}>
+                <lightning-icon icon-name="utility:close"
+                    alternative-text="close"
+                    variant="inverse"
+                    size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Update Record</h2>
+          </header>
+          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+            <lightning-layout>
+                <lightning-layout-item padding="around-small">
+                    <b>First Name</b><lightning-input onchange={updateValue} data-field="First_Name__c" value={editObj.First_Name__c}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small">
+                    <b>Last Name</b><lightning-input onchange={updateValue} data-field="Last_Name__c" value={editObj.Last_Name__c}></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout>
+                    <lightning-layout-item padding="around-small">
+                        <b>Contact</b><lightning-input onchange={updateValue} data-field="Phone__c" value={editObj.Phone__c}></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <b>Email</b><lightning-input onchange={updateValue} data-field="Email__c" value={editObj.Email__c}></lightning-input>
+                    </lightning-layout-item>
+            </lightning-layout>
+          </div>
+          <footer class="slds-modal__footer">
+            <lightning-button variant="brand" class="slds-m-left_x-small" onclick={saveRecord} label="Save"></lightning-button>
+            <lightning-button variant="brand-outline" class="slds-m-left_x-small" label="Cancel" onclick={closeModel}></lightning-button>
+          </footer>
+        </div>
+      </section> 
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <!------------------------------------------ View Record ----------------------------------> 
+    <template if:true={isView}>
+        <lightning-card title="Current Record" icon-name="standard:contact" variant="base">
+            <div class="slds-m-around_medium">
+                <b>First Name : </b> <lightning-formatted-text value={editObj.First_Name__c}></lightning-formatted-text><br/>
+                <b>Last  Name : </b> <lightning-formatted-text  value={editObj.Last_Name__c}></lightning-formatted-text><br/>
+                <b>Contact    : </b> <lightning-formatted-phone value={editObj.Phone__c}></lightning-formatted-phone><br/>
+                <b>Email      : </b><lightning-formatted-email value={editObj.Email__c}></lightning-formatted-email>
+            </div>
+            <footer class="slds-modal__footer">
+                <button class="slds-button slds-button_brand" onclick={backButton}>Back</button>
+            </footer>
+        </lightning-card>
+    </template>
+</template>

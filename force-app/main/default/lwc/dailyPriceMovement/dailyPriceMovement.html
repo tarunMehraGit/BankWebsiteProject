@@ -1,0 +1,40 @@
+<template>
+    <lightning-card>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size_3-of-12 slds-m-left_x-large slds-m-bottom_small">
+                <lightning-input type="date" label="Start Date"></lightning-input>
+            </div>
+        </div>
+        <div class="slds-m-around_large">
+        <table class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols">
+            <tr class="slds-theme_shade slds-border_right">
+                <th rowspan="2" class="slds-border_right">Commodity</th>
+                <th class="slds-border_right">Today</th>
+                <th class="slds-border_right">Yesterday</th>
+                <th class="slds-border_right">1 Week Ago</th>
+                <th class="slds-border_right">Month Starting</th>
+                <th class="slds-border_right">3 Months Ago</th>    
+                <th colspan="4" style="text-align:center;">Peak & Trough(Last 90 days)</th>
+            </tr>
+            <tr class="slds-theme_shade">
+                <th class="slds-border_right">4 May 2021</th>
+                <th class="slds-border_right">3 May 2021</th>
+                <th class="slds-border_right">27 April 2021</th>
+                <th class="slds-border_right">1 May 2021</th>
+                <th class="slds-border_right">3 feb 2021</th>
+                <th class="slds-border_right">Highest</th>
+                <th class="slds-border_right">Highest Rate Date</th>
+                <th class="slds-border_right">Lowest</th>
+                <th>Lowest Rate Date</th>
+            </tr>
+            
+            <template for:each={dailyPriceList} for:item="price">
+                <tr key={price}>
+                    <td  class="slds-theme_shade">{price.Commudity__c}</td>
+                    <td>{price.Price__c}</td>
+                </tr>
+            </template>
+        </table>
+        </div>
+    </lightning-card>
+</template>

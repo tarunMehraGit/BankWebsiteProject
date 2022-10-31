@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="InforMation">
+        <lightning-input type="text" onchange={changeHandler} label="Enter Your Name"></lightning-input>
+        <lightning-input type="text"  onchange={changeAge} label="Enter Your Age"></lightning-input>
+        <div>
+            <center><lightning-button label="Save" class="slds-p-left_xx-large" onclick={clickHandler}>  
+         </lightning-button></center>
+            <p>{name} &nbsp; {age}</p>
+        </div>
+    </lightning-card>
+</template>

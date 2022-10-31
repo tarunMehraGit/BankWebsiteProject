@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Contact List" icon-name="custom:custom67">
+        <div class="slds-m-around_medium">
+            <table>
+                <thead>
+                    <tr class="design">
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={contactList} for:item="contact">
+                        <tr key={contact}>
+                            <td>{contact.fields.Name.value}</td>
+                            <td><lightning-formatted-email value={contact.fields.Email.value}></lightning-formatted-email></td>
+                            <td><lightning-formatted-phone value={contact.fields.Phone.value}></lightning-formatted-phone></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </lightning-card>
+</template>

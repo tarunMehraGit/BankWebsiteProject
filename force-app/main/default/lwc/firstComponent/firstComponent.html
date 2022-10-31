@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Cities">
+    <ul class="slds-m-left_medium">
+        <li>Ajmer</li>
+        <li>Jaipur</li>
+        <li>Kota</li>
+        <li>Bikaner</li>
+    </ul>
+    <lightning-button variant="brand" label="Brand" title="Primary action" class="slds-m-left_small"></lightning-button>
+    </lightning-card>
+    <lightning-card title="Name List">
+    <template for:each={nameList} for:item="name">
+        <p key={name} class="slds-m-left_medium">{name}</p>
+    </template>
+    <lightning-button variant="success" label="Success" title="SuccessFul action" class="slds-m-left_medium"></lightning-button>
+    </lightning-card>
+</template>

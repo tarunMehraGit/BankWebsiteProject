@@ -1,0 +1,29 @@
+<apex:page showHeader="false" controller="RelationShipController" >
+    <apex:pageBlock >
+        <apex:variable var="srNo" value="{!0}"/>
+    	<apex:pageBlockSection columns="1" collapsible="false" title="Contact List">
+        	<apex:pageBlockTable value="{!contactList}" var="contact">
+                <apex:column headerValue="#">
+                    <apex:variable var="srNo" value="{!srNo+1}" />
+                	{!srNo}
+                </apex:column>
+            	<apex:column headerValue="Name" value="{!contact.Name}"/>
+                <apex:column headerValue="Email" value="{!contact.Email}"/>
+                <apex:column headerValue="Account Name" value="{!contact.Account.Name}"/>
+                <apex:column headerValue="Account Email" value="{!contact.Account.Email__c}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="1" collapsible="false" title="Account List">
+        	<apex:pageBlockTable value="{!accountList}" var="account">
+                <apex:column value="{!account.Name}"/>
+                <apex:column headerValue="Contact" value="{!account.phone}"/>
+                <apex:column headerValue="Email" value="{!account.Email__c	}"/>
+                <apex:column headerValue="Contact Name">
+					<apex:repeat value="{!account.contacts}" var="contact">
+                    	{!contact.Name}
+                    </apex:repeat>                
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

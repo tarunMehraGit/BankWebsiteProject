@@ -1,0 +1,14 @@
+<apex:component >
+    <apex:form >
+        <apex:pageBlock >
+            <h1 style="Color:blue;margin-left:35%">Invoice</h1>
+            <apex:image url="{!URLFOR($Resource.Hotel_logo)}" height="150px" width="120px"/><br/><br/>
+            <b>INVOICE</b><br/><br/>
+            <hr/>
+            <apex:outputLabel >Invoice No.</apex:outputLabel><br/>
+            <apex:outputLabel >Reference</apex:outputLabel><br/>
+            <apex:outputLabel >Date</apex:outputLabel><br/><br/>
+            <br/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:component>

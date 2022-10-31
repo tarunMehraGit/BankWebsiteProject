@@ -1,0 +1,8 @@
+.account-tbody td{
+    font-weight: bold;
+}
+.account-heading{
+    height: 50px;
+    color: white;
+    background-color: darkslateblue;
+}

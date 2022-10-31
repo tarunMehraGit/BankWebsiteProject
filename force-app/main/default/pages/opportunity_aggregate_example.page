@@ -1,0 +1,11 @@
+<apex:page showHeader="false" title="Oppotubnity List" controller="OpportunityAggregateController">
+    <apex:sectionHeader title="Opportunity" subtitle="Opportunity List"/>
+    <apex:pageBlock >
+    	<apex:pageBlockSection columns="1" title="Opportunity List" collapsible="false">
+        	<apex:pageBlockTable value="{!accountList}" var="account" >
+                <apex:column headerValue="Account Name" value="{!account.Name}"></apex:column>
+                <apex:column headerValue="Total Opportunity" value="{!account.opportunities.size}"></apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

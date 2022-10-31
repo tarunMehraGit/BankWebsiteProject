@@ -1,0 +1,81 @@
+<apex:page controller="MergeAttachmentController" showHeader="false" title="Merge Attachments">
+    <apex:sectionHeader title="Attachments" subtitle="Merge Attachments"/>
+    <apex:form >
+    <apex:pageBlock >
+        <apex:actionFunction name="getattachmentObjects" action="{!attachmentObjects}"/>
+    	<apex:actionFunction name="allChecked" action="{!allChecked}"/>
+        <apex:actionFunction name="singleCheck" action="{!singleCheck}"/>
+        <apex:actionFunction name="displayPopup" action="{!showDialog}"/>
+        <apex:variable var="srNo" value="{!0}"/> 
+        <!-------------------------------- Objects Details ---------------------------->
+        <apex:pageBlockSection title="Lists" columns="4" collapsible="false">
+        	<apex:selectList size="1" value="{!allObjectName}" onchange="getattachmentObjects();">
+                <apex:selectOption itemLabel="--None--" itemValue=""/>
+                <apex:selectOptions value="{!OptionList}"></apex:selectOptions>
+            </apex:selectList>
+            <apex:commandButton value="Merge" action="{!showButton}" rendered="{!mergeButton}"/>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="1">
+            <apex:pageBlockTable value="{!allWrapperList}" var="WrapperObj">
+                <apex:column headerValue="#">
+                    <apex:variable var="srNo" value="{!srNo+1}"/>
+                    {!srNo}
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">
+                        <apex:inputCheckbox value="{!isAllchecked}" onClick="allChecked();"/>
+                    </apex:facet>
+                    <apex:inputCheckbox value="{!WrapperObj.isChecked}" onClick="singleCheck();"/>
+                </apex:column>
+                <apex:column headerValue="File Name">
+                    <apex:repeat value="{!WrapperObj.objectName['Attachments']}" var="attachment">
+                        <apex:outputText value="{!attachment.name}" />
+                    </apex:repeat>
+                </apex:column>
+                <apex:column headerValue="Preview">
+                    <apex:repeat value="{!WrapperObj.objectName['Attachments']}" var="attachment">
+                        <apex:image url="{!URLFOR($Action.Attachment.Download, attachment.id)}" height="50px" width="50px"/> 
+                    </apex:repeat>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+       <!--------------------------------------- Popup Menu -------------------------------->
+        <apex:outputPanel id="popupId" layout="block" styleClass="customPopup" rendered="{!showPopup}">
+        	<apex:variable var="Sr" value="{!0}"/>
+            <apex:pageBlockSection title="Object List" columns="1" collapsible="false">
+            	<apex:selectList size="1" value="{!popupObjects}" onchange="displayPopup();">
+                    <apex:selectOption itemLabel="--None--" itemValue=""/>
+                    <apex:selectOptions value="{!OptionList}"/>
+                </apex:selectList>
+                <!--<apex:commandButton value="Copy Attachment" action="{!copyAttachment}"/>-->
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" title="List Of Selected List" collapsible="false">
+                <apex:pageBlockTable value="{!objectWrapperPopupList}" var="wrapperObj">
+                    <apex:column headerValue="#">
+                        <apex:variable var="Sr" value="{!Sr+1}"/>
+                        {!Sr}
+                    </apex:column>
+                    <apex:column headerValue="Action">
+                    	<apex:inputCheckbox value="{!wrapperObj.isChecked}"/>
+                	</apex:column>
+                    <apex:column value="{!wrapperObj.ObjectName['name']}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:outputPanel>
+    </apex:pageBlock>
+    </apex:form>
+    <style type="text/css">
+        .customPopup {
+        background-color: white;
+        <!--border-radius: 20px;-->
+        border-style: solid;
+        border-width: 2px;
+        left: 30%;
+        background: #fff;
+        padding: 10px;
+        position: absolute;
+        width: 500px;
+        top: 30%;
+        }
+    </style>
+</apex:page>

@@ -1,0 +1,38 @@
+<apex:page title="Customer List" showHeader="false" controller="CustomerController">
+    <apex:sectionHeader title="Customers" subtitle="Home"/>
+    <apex:pageBlock id="dId">
+        <apex:form >   
+            <apex:pageBlockSection columns="1" title="Customer List" collapsible="false">
+                <apex:variable var="srNo" value="{!0}"/>
+                <apex:pageBlockTable value="{!customerList}" var="customer">
+                    <apex:column headerValue="#">
+                        <apex:variable var="srNo" value="{!srNo+1}"/>
+                        {!srNo}
+                    </apex:column>
+                    <apex:column headerValue="Action">
+                        <apex:commandButton value="Edit" action="{!editRecord}" reRender="eId">
+                            <apex:param name="" value="{!customer.Id}" assignTo="{!editId}"/>
+                        </apex:commandButton>
+                        <apex:commandButton value="View" action="{!viewRecord}" reRender="vId">
+                            <apex:param name="" value="{!customer.Id}" assignTo="{!viewId}"/>
+                        </apex:commandButton>
+                        <apex:commandButton value="Delete" action="{!deleteRecord}" reRender="dId">
+                            <apex:param name="" value="{!customer.Id}" assignTo="{!customerId}"/>
+                        </apex:commandButton>
+                        <apex:commandButton value="Clone" action="{!cloneButton}" reRender="cId">
+                        	<apex:param name="" value="{!customer.Id}" assignTo="{!cloneId}"/>
+                        </apex:commandButton> 
+                    </apex:column>	
+                    <apex:column headerValue="Customer Name">
+                    	<apex:outputLink value="https://ibirdssoftwarepvtltd-dev-ed.my.salesforce.com/{!customer.Id}">{!customer.Full_Name__c}</apex:outputLink>
+                    </apex:column>
+                    <apex:column headerValue="Gender" value="{!customer.Gender__c}"/>
+                    <apex:column headerValue="Address" value="{!customer.Address__c}"/>
+                    <apex:column headerValue="City" value="{!customer.City__c}"/>
+                    <apex:column headerValue="Email" value="{!customer.Email__c}"/>
+                    <apex:column headerValue="Contact #" value="{!customer.Phone__c}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:form>
+    </apex:pageBlock>
+</apex:page>

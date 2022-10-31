@@ -1,0 +1,7 @@
+<apex:page sidebar="false">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page 
+  Hii All Good After Noon
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

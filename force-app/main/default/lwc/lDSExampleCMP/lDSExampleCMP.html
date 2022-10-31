@@ -1,0 +1,18 @@
+<template>
+
+	<lightning-card variant="Narrow" title="Record Read Form" icon-name="standard:contact">
+		<lightning-record-form record-id={recordId} object-api-name={objectName} mode="readOnly" layout-type="Full">
+		</lightning-record-form>
+	</lightning-card>
+	
+	<lightning-card variant="Narrow" title="Record View Form" icon-name="standard:contact">
+		<lightning-record-form record-id={recordId} object-api-name={objectName} mode="view" layout-type="Full">
+		</lightning-record-form>
+	</lightning-card>
+	
+	<lightning-card variant="Narrow" title="Record Edit Form" icon-name="standard:contact">
+		<lightning-record-form record-id={recordId} object-api-name={objectName} mode="Edit" layout-type="Full">
+		</lightning-record-form>
+	</lightning-card>
+
+</template>

@@ -1,0 +1,13 @@
+<template>
+    
+    <template for:each={countryDetails} for:item="country">
+        <div class="card" key={country.name}>
+            <h1><b>Country Name</b></h1>
+            <p class="title">{country.Name}</p></br>
+            <h1><b>Capital</b></h1>
+            <p>{country.Capital__c}</p></br>
+            <h1><b>Continent</b></h1>
+            <p>{country.Continent__c}</p></br>
+        </div>
+    </template>
+</template>

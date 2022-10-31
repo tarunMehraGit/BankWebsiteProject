@@ -1,0 +1,37 @@
+<apex:page title="Student List" showHeader="false" controller="StudentPaginationController">
+    <apex:sectionHeader title="Student" subtitle="Student List"/>
+    <apex:form id="frm">
+        <apex:variable var="srNo" value="{!0}"/>
+       <!-- <apex:actionFunction name="selectList" action="{!selectList}" reRender="frm"/> -->
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="bottom">
+                <apex:outputLabel style="margin-left:-40%">{!(pageSize) + 1 - pageSize} - {} </apex:outputLabel>
+                <div style="margin-left:60%;">
+                    <apex:commandButton value="<<" action="{!firstPage}" reRender="frm"/>
+                    <apex:commandButton value="<" action="{!previousPage}" disabled="{showButton}" reRender="frm"/>		
+                    <apex:commandButton value="1" action="{!firstPage}" reRender="frm"/>
+                    <apex:commandButton value="2" action="{!nextPage}" reRender="frm"/>
+                    <apex:commandButton value="3" action="{!nextPage}" reRender="frm"/>
+                    <apex:commandButton value="4" action="{!lastPage}" reRender="frm"/>
+                    <apex:commandButton value=">" action="{!nextPage}" reRender="frm"/>
+                    <apex:commandButton value=">>" action="{!lastPage}" reRender="frm"/> 
+                </div>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1"  title="Student List" collapsible="false">
+                <!--<apex:selectList value="{!pageSize}" size="1" onchange="selectList();">
+                    <apex:selectOptions value="{!Options}"></apex:selectOptions>
+                </apex:selectList>-->
+                <apex:pageBlockTable value="{!StudentListPag}" var="student">
+                    <apex:column headerValue="#">
+                        <apex:variable var="srNo" value="{!srNo+1}"/>
+                        {!srNo}	
+                    </apex:column>
+                    <apex:column value="{!student.First_Name__c}"/>
+                    <apex:column value="{!student.Last_Name__c}"/>
+                    <apex:column value="{!student.Phone__c}"/>
+                    <apex:column value="{!student.Email__c}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

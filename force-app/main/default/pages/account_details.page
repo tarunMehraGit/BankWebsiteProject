@@ -1,0 +1,157 @@
+<apex:page showHeader="false" title="Account Details" standardController="Account">
+	<apex:sectionHeader title="" subtitle="{!Account.Name}"/>
+    <apex:form >
+        <apex:pageBlock title="Account Detail">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Edit" />
+                <apex:commandButton value="Delete"/>
+                <apex:commandButton value="Sharing"/>
+                <apex:commandButton value="Include Offline"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Account Owner</apex:outputLabel>
+                    {!$User.FirstName} {!$User.LastName}
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Rating</apex:outputLabel>
+                    <apex:outputField value="{!Account.Rating}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Account Name</apex:outputLabel>
+                    <apex:outputField value="{!Account.Name}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Phone</apex:outputLabel>
+                     <apex:outputField value="{!Account.Phone}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Parent Account</apex:outputLabel>
+                     <apex:outputField value="{!Account.ParentId}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Fax</apex:outputLabel>
+                     <apex:outputField value="{!Account.Fax}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Account Number</apex:outputLabel>
+                     <apex:outputField value="{!Account.AccountNumber}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Website</apex:outputLabel>
+                     <apex:outputField value="{!Account.Website}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Account Site</apex:outputLabel>
+                     <apex:outputField value="{!Account.site}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Ticker Symbol</apex:outputLabel>
+                     <apex:outputField value="{!Account.TickerSymbol}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Type</apex:outputLabel>
+                    <apex:outputField value="{!Account.Type}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Ownership</apex:outputLabel>
+                    <apex:outputField value="{!Account.Ownership}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Industry</apex:outputLabel>
+                     <apex:outputField value="{!Account.Industry}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Employees</apex:outputLabel>
+                     <apex:outputField value="{!Account.NumberOfEmployees}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Annual Revenue</apex:outputLabel>
+                     <apex:outputField value="{!Account.AnnualRevenue}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >SIC Code</apex:outputLabel>
+                     <apex:outputField value="{!Account.Sic}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1">
+            	 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Email</apex:outputLabel>
+                     <apex:outputField value="{!Account.Email__c}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Account Group Name</apex:outputLabel>
+                     <apex:outputField value="{!Account.Account_Group_Name__c}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >City</apex:outputLabel>
+                     <apex:outputField value="{!Account.City__c}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Number Of Locations</apex:outputLabel>
+                     <apex:outputField value="{!Account.No_Of_Locations__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+            	<apex:pageBlockSectionItem >
+                	<apex:outputLabel >Billing Address</apex:outputLabel>
+                    <apex:outputField value="{!Account.BillingStreet}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Shipping Address</apex:outputLabel>
+                    <apex:outputField value="{!Account.ShippingStreet}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+					<apex:outputLabel >Customer Priority</apex:outputLabel>
+                    <apex:outputField value="{!Account.CustomerPriority__c}"/>                	
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >SLA</apex:outputLabel>
+                    <apex:outputField value="{!Account.SLA__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                	<apex:outputLabel >SLA Expiration Date</apex:outputLabel>
+                    <apex:outputField value="{!Account.SLAExpirationDate__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                	<apex:outputLabel >SLA Serial Number</apex:outputLabel>
+                    <apex:outputField value="{!Account.SLASerialNumber__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                	<apex:outputLabel >Number of Locations</apex:outputLabel>
+                    <apex:outputField value="{!Account.No_Of_Locations__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Upsell Opportunity</apex:outputLabel>
+                    <apex:outputField value="{!Account.UpsellOpportunity__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Active</apex:outputLabel>
+                    <apex:outputField value="{!Account.Active__c}"/> 
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Created By</apex:outputLabel>
+                    <apex:outputField value="{!Account.CreatedById}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Last Modified By</apex:outputLabel>
+                    <apex:outputField value="{!Account.LastModifiedById}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1">   
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Description</apex:outputLabel> 
+                    <apex:outputField value="{!Account.Description}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Custom Links</apex:outputLabel> 
+                    <apex:outputField value="{!Account.PhotoUrl}"/>
+                </apex:pageBlockSectionItem> 
+            </apex:pageBlockSection> 
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

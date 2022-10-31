@@ -1,0 +1,32 @@
+<apex:page controller="AccountWrapperController" showHeader="false" title="Account List">
+    <apex:sectionHeader title="Account" subtitle="Account List"/>
+    <apex:form id="form">
+    	<apex:pageBlock >
+            <apex:actionFunction name="allChecked" action="{!allChecked}" reRender="form"/>
+            <apex:actionFunction name="unchecked" action="{!unchecked}" reRender="form"/>
+            <apex:pageBlockButtons >
+            	<apex:commandButton value="Selected Record" action="{!SelectedAccount}" />
+            </apex:pageBlockButtons>
+        	<apex:pageBlockSection columns="1" title="Account List" collapsible="false">
+                	<apex:pageBlockTable value="{!accountWrapperList}" var="accountWrapper" >
+                        <apex:column >
+                           <apex:facet name="header">
+                            	<apex:inputCheckbox value="{!isAllChecked}" onClick="allChecked();" />
+                            </apex:facet>
+                            <apex:inputCheckbox value="{!accountWrapper.isChecked}" onClick="unchecked();"/>
+                        </apex:column>
+                        <apex:column headerValue="Account Name" value="{!accountWrapper.account.Name}"/>
+                        <apex:column headerValue="Email" value="{!accountWrapper.account.Email__c}"/>
+                        <apex:column headerValue="Contact" value="{!accountWrapper.account.phone}"/>
+                    </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" title="Selected Account" collapsible="false">
+            	<apex:pageBlockTable value="{!accountList}" var="acc">
+					<apex:column value="{!acc.Name}"/>
+                    <apex:column value="{!acc.Email__c}"/>
+                    <apex:column value="{!acc.Phone}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

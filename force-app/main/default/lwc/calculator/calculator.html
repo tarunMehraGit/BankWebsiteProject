@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Calculation">
+        <lightning-input type="text" name="value1" onchange={getNumber} value={firstNumber} class="slds-p-left_medium" label="Enter First  Number"></lightning-input>
+        <lightning-input type="text" name="value2" onchange={getNumber} value={secondNumber} class="slds-p-left_medium" label="Enter Second Number"></lightning-input>
+        <br/>
+        <div class="slds-p-left_medium">
+            <p>Resulted Number</p>
+            <div class="slds-box slds-theme_shade"> 
+                <i><div class={text_color}>{result}</div></i>
+            </div>
+        </div> 
+        <div class="slds-p-top_large" align="center">
+            <lightning-button disabled = {show} variant="success" label="Add" value="all" onclick={calcButton} class="slds-p-left_large"></lightning-button>
+            <lightning-button disabled = {show} variant="destructive" label="Subtract" value="all" onclick={calcButton} class="slds-p-left_large"></lightning-button>
+            <lightning-button disabled = {show} variant="brand" label="Multiply" value="all" onclick={calcButton} class="slds-p-left_large"></lightning-button>
+            <lightning-button disabled = {show} variant="brand-outline" label="Division" value="all" onclick={calcButton} class="slds-p-left_large"></lightning-button>
+            <lightning-button disabled = {show} variant="mod" label="Modulas" value="all" onclick={calcButton} class="slds-p-left_large"></lightning-button>
+            <lightning-button disabled = {show} variant="success" label="Clear" value="all" onclick={calcButton} class="slds-p-left_large"></lightning-button>
+        </div>
+    </lightning-card>
+</template>

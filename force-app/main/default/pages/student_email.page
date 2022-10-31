@@ -1,0 +1,45 @@
+<apex:page showHeader="false" controller="StudentEmailController" title="Student List">
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:sectionHeader title="Students" subtitle="Student List"/>
+    <style type="text/css">
+        .sendButton {
+            margin-left: 465px !important;
+    		margin-top: -32px !important;
+            background: blue !important;
+            color: #FFF !important;
+        }
+    </style>
+    <apex:form >
+        <apex:actionFunction name="headerChecked" action="{!headerChecked}"/>
+        <apex:actionFunction name="manualChecked" action="{!manualChecked}"/>
+        <!--<apex:actionFunction name="sendAttachment" />-->
+          <apex:variable var="srNo" value="{!0}"/>
+    	<apex:pageBlock >
+            <apex:pageBlockSection columns="1">	
+                <apex:outputText label="To" value="{!toAddress}" />
+                <apex:inputText label="Subject" value="{!subject}"/>
+                <apex:inputTextarea label="Body" value="{!body}" cols="40" rows="10" style="resize:none" />
+                <apex:inputCheckbox label="With Attachment" onchange="sendAttachment();"/>
+                <apex:commandButton value="Send" action="{!sendEmail}"  styleClass="sendButton"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Student List" collapsible="false" columns="1">
+                <apex:pageBlockTable value="{!studentWrapperList}" var="wrapperObj" >
+                    <apex:column headerValue="#">
+                        <apex:variable var="srNo" value="{!srNo+1}"/>
+                        {!srNo}	
+                    </apex:column>
+                    <apex:column >	
+                        <apex:facet name="header">
+                            <apex:inputCheckbox value="{!headerCheck}" onchange="headerChecked();"/>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!wrapperObj.isChecked}" onchange="manualChecked();"/>
+                    </apex:column>
+                    <apex:column headerValue="Name" value="{!wrapperObj.student.First_Name__c}"/>
+                    <apex:column headerValue="Contact" value="{!wrapperObj.student.Phone__c}" />
+                    <apex:column headerValue="Email" value="{!wrapperObj.student.Email__c}" />
+                </apex:pageBlockTable>            	
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+     
+</apex:page>

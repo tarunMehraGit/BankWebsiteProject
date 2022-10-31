@@ -1,0 +1,35 @@
+<apex:page showHeader="false" controller="SearchContactsController" title=" Search Contact"  lightningStylesheets="true" > 
+    <apex:sectionHeader title="Contacts" subtitle="Search"/>
+    <apex:form id="frm">
+        <apex:actionFunction name="selectList" action="{!selectList}" reRender="frm"/>
+        <apex:pageBlock >
+            <apex:inputText value="{!searchValue}" html-placeholder="Search Text Here"/>
+            <apex:commandButton value="Search" action="{!doSearch}"/>
+            <apex:selectList value="{!pageSize}" size="1" onchange="selectList();" style="float:right" >
+                <apex:selectOptions value="{!Options}"/>
+            </apex:selectList>
+            <apex:pageBlockSection columns="3">
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1">
+                <apex:variable var="srNo" value="{!start}"/>
+                <apex:pageBlockTable value="{!allContactList}" var="contact">
+                    <apex:column headerValue="#">
+                        <apex:variable var="srNo" value="{!srNo+1}"/>
+                        {!srNo}	
+                    </apex:column>
+                    <apex:column headerValue="Name" value="{!contact.Name}" />
+                    <apex:column headerValue="Email" value="{!contact.Email}" />
+                    <apex:column headerValue="Account Name" value="{!contact.Account.Name}" />
+                    <apex:column headerValue="Phone" value="{!contact.Phone}" />
+                    <apex:column headerValue="Type" value="{!contact.Type__c}" />
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <div style="text-align:right">
+                <apex:commandButton value="First" action="{!first}" disabled="{!start == 0}" reRender="frm"/>
+                <apex:commandButton value="Previous" action="{!previous}" disabled="{!start == 0}" reRender="frm"/>
+                <apex:commandButton value="Next" action="{!next}"  disabled="{!endIndex = contactList.size}" reRender="frm"/>
+                <apex:commandButton value="Last" action="{!last}" disabled="{!endIndex = contactList.size}" reRender="frm"/>
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

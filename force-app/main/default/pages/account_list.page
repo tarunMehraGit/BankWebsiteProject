@@ -1,0 +1,23 @@
+<apex:page title="Account List" showHeader="false" tabStyle="Account" standardController="Account" recordSetVar="Accounts">
+    <apex:sectionHeader title="Accounts" subtitle="Home"/>
+    <apex:form >
+        <apex:pageBlock title="Recent Accounts">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="New"/>
+            </apex:pageBlockButtons>    
+            <apex:pageBlockSection columns="1" title="Account List" collapsible="false">
+                <apex:variable var="srNo" value="{!0}"/>
+                <apex:pageBlockTable value="{!Accounts}" var="acc">
+                    <apex:column headerValue="Serial No.">
+                        <apex:variable var="srNo" value="{!srNo+1}"/>
+                        {!srNo}
+                    </apex:column>
+                    <apex:column headerValue="Account Name" value="{!acc.Name}"/>
+                    <apex:column headerValue="Phone" value="{!acc.Phone}"/>
+                    <apex:column headerValue="Email" value="{!acc.Email__c}"/>
+                    <apex:column headerValue="Type" value="{!acc.Type}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,39 @@
+<apex:page showHeader="false" title="Country List" controller="CountryController">
+    <apex:sectionHeader title="Country" subtitle="Country Table"/>
+    <apex:form >
+    	<apex:pageBlock >
+            	<apex:pageBlockSection columns="1">
+                    <apex:dataTable value="{!countryMap}" var="count" width="100%" border="2px" bgcolor="cyan">
+                        <apex:column headerValue="Country" value="{!count}" />
+                        <apex:column headerValue="State" >
+                        	<apex:repeat value="{!countryMap[count]}" var="stateName">
+                               <div>
+                            	{!stateName}
+                                </div>
+                            </apex:repeat>
+                        </apex:column>
+                        <apex:column headerValue="City">
+                        	<apex:repeat value="{!countryMap[count]}" var="stateName">
+                            	<apex:repeat value="{!countryMap[count][stateName]}" var="cityName">
+                                    <div>
+                                    	{!cityName}    
+                                    </div>                 
+                                </apex:repeat>
+                            </apex:repeat>
+                        </apex:column>
+                        <apex:column headerValue="Pincode">
+                            <apex:repeat value="{!countryMap[count]}" var="stateName">
+                                <apex:repeat value="{!countryMap[count][stateName]}" var="cityName">
+                                	<apex:repeat value="{!pinCodeMap[cityName]}" var="pincode">
+                                    	<div>
+                                            {!pincode}
+                                        </div>
+                                    </apex:repeat>
+                                </apex:repeat>
+                            </apex:repeat>
+                        </apex:column>
+            </apex:dataTable>
+                    </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

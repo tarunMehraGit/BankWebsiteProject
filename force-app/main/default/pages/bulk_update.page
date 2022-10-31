@@ -1,0 +1,28 @@
+<apex:page showHeader="false" title="Multiple Contact Update" controller="BulkUpdateController">
+   <apex:sectionHeader title="Customer" subtitle="Edit Customer"/>
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:form >
+    	<apex:pageBlock >
+        	<apex:pageBlockButtons >
+            	<apex:commandButton value="Save" action="{!saveButton}"/>
+                <apex:commandButton value="Cancel" action="{!cancelButton}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Contact List" columns="1" collapsible="false">
+            	<apex:pageBlockTable value="{!contactList}" var="contact">
+                	<apex:column headerValue="First Name" >
+                    	<apex:inputField value="{!contact.FirstName}"/>
+                    </apex:column>
+                    <apex:column headerValue="Last Name">
+                    	<apex:inputField value="{!contact.LastName}"/>
+                    </apex:column>
+                    <apex:column headerValue="Account">
+                    	<apex:inputField value="{!contact.AccountId}"/>
+                    </apex:column>
+                     <apex:column headerValue="Email">
+                    	<apex:inputField value="{!contact.Email}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

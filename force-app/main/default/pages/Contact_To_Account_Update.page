@@ -1,0 +1,22 @@
+<apex:page id="theIframe" >
+<apex:form >
+
+ <!-- <apex:actionFunction action="{!redirect}" name="OpenPage" reRender="pb,theIframe">
+    <apex:param assignTo="{!Page}" value="" name="param1"/>
+</apex:actionFunction> -->
+
+    <apex:pageBlock id="theIframe"> 
+
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Update Account" ></apex:commandButton>
+        </apex:pageBlockButtons>
+        
+       
+       <!-- <apex:iframe src="https://www.google.com"  height="500" width="300" scrolling="true" id="theIframe" /> -->
+    
+   <!-- <apex:iframe id="theIframe" src="{!OpenPageURL}" scrolling="true"/> -->
+</apex:pageBlock>
+
+
+</apex:form>
+</apex:page>

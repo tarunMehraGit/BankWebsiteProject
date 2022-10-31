@@ -1,0 +1,49 @@
+<apex:page showHeader="false" title="Contact List" controller="ContactListController">
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:sectionHeader title="Contact" subtitle="Contact List"/>
+    <apex:form id="form">
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+            	<apex:commandButton value="Save" action="{!saveRecord}"/>
+            </apex:pageBlockButtons>
+            <apex:variable var="srNo" value="{!0}"/> 
+            <apex:actionFunction name="EditView" reRender="form"/>
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockTable value="{!contactWrapperList}" var="contactWrapper" > 
+                    <apex:column headerValue="#">
+                        <apex:variable var="srNo" value="{!srNo+1}"/>
+                        {!srNo}
+                    </apex:column>
+                    <apex:column headerValue="Action">
+                        <apex:commandLink Value="Add |" action="{!addRecord}">
+                        	<apex:param name="add" assignTo="{!getIndex}" value="{!srNo}"/>
+                        </apex:commandLink>
+                        <apex:commandLink Value=" Delete" action="{!deleteButton}">
+                        	<apex:param name="del" assignTo="{!Index}" value="{!srNo}"/>
+                        </apex:commandLink>
+                    </apex:column>
+                    <apex:column headerValue="Select">
+                        <apex:inputCheckbox value="{!contactWrapper.isChecked}" onClick="EditView();"
+                        rendered="{!if(contactWrapper.contact.id == NULL ,false,true) }"/>
+                    </apex:column>
+                    <apex:column headerValue="First Name">
+                        <apex:outputText value="{!contactWrapper.contact.FirstName}" rendered="{!(!contactWrapper.isChecked)}"/>
+                        <apex:inputField value="{!contactWrapper.contact.FirstName}" rendered="{!contactWrapper.isChecked}"/>
+                    </apex:column>
+                    <apex:column headerValue="Last Name">
+                        <apex:outputText value="{!contactWrapper.contact.lastName}" rendered="{!(!contactWrapper.isChecked)}"/>
+                        <apex:inputField value="{!contactWrapper.contact.lastName}" rendered="{!contactWrapper.isChecked}" required="false"	/>
+                    </apex:column>
+                    <apex:column headerValue="Email">
+                        <apex:outputText value="{!contactWrapper.contact.Email}" rendered="{!(!contactWrapper.isChecked)}"/>
+                        <apex:inputField value="{!contactWrapper.contact.Email}" rendered="{!contactWrapper.isChecked}"/>
+                    </apex:column>
+                    <apex:column headerValue="Contact">
+                        <apex:outputText value="{!contactWrapper.contact.Phone}" rendered="{!(!contactWrapper.isChecked)}"/>
+                        <apex:inputField value="{!contactWrapper.contact.Phone}" rendered="{!contactWrapper.isChecked}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

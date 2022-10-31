@@ -1,0 +1,56 @@
+<apex:page title="Country" showHeader="false" controller="CountryController">
+    <apex:sectionHeader title="Country" subtitle="Countries"/>
+    <apex:form id="form">
+        <apex:actionFunction name="showState" action="{!showState}" reRender="form" status="loadingState" />
+        <apex:actionFunction name="showCity" action="{!showCity}" reRender="form" status="loadingCity"/>
+        <apex:actionFunction name="pincode" action="{!showPincode}" reRender="form" status="loadingPincode"/>
+        <apex:actionFunction name="" reRender="form" status="loadingSuccess"/>
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Select Country" collapsible="false" columns="2">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Select Country</apex:outputLabel>
+                    <apex:selectList size="1" value="{!countryValue}" onchange="showState();">
+                        <apex:selectOption itemLabel="--None--" itemValue=""></apex:selectOption>
+                        <apex:selectOptions value="{!Country}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:actionStatus id="loadingState" startText="Loading..."></apex:actionStatus>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="2">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Select State</apex:outputLabel>
+                    <apex:selectList size="1" value="{!stateValue}" onChange="showCity();">
+                        <apex:selectOption itemLabel="--None--" itemValue=""></apex:selectOption>	
+                        <apex:selectOptions value="{!StateOptionList}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                	<apex:actionStatus id="loadingCity" startText="Loading..."></apex:actionStatus>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="2" >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Select City</apex:outputLabel>
+                    <apex:selectList size="1"  value="{!cityValue}" onChange="pincode();">
+                        <apex:selectOption itemLabel="--None--" itemValue=""></apex:selectOption>
+                        <apex:selectOptions value="{!CityOptionList}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >
+                	<apex:actionStatus id="loadingPincode" startText="Loading..."></apex:actionStatus>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>	
+            <apex:pageBlockSection columns="2">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Selected City Pincode</apex:outputLabel>
+                    <apex:outputText >{!pin}</apex:outputText>
+                </apex:pageBlockSectionItem>
+   				<apex:pageBlockSectionItem >
+                	<apex:actionStatus id="loadingSuccess" startText="SuccessFull..."></apex:actionStatus>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

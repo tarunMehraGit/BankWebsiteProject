@@ -1,0 +1,30 @@
+<apex:component access="global" controller="ProjectTaskController">
+    <apex:attribute name="ProjectIdValue" type="String" description="This is the Id of the account" assignTo="{!projectTaskId}" access="global" />
+    <apex:variable var="index" value="{!0}" /> 
+    
+    <table border="2px">
+        <thead>    
+            <tr>
+                <th>Sr.No.</th>
+                <th>Project Task Name </th> 
+                <th>Creation Date</th>
+                <th>Completion Date</th>
+                <th>Completed By</th>
+            </tr>
+        </thead>        
+        <tbody>
+           <apex:repeat value="{!projectTaskDetails}" var="project">
+              <apex:variable var="index" value="{!index + 1}" /> 
+                <tr align="center">
+                    <td> 
+                        {!index} 
+                    </td>
+                    <td>{!project.Type__c}</td>
+                    <td>{!project.CreatedDate}</td>
+                    <td>{!project.Completion_Date__c}</td>
+                    <td>{!project.CreatedBy.Name}</td>                                                
+                </tr>
+           </apex:repeat>            
+        </tbody>   
+    </table>
+</apex:component>

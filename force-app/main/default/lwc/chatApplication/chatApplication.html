@@ -1,0 +1,48 @@
+<template>
+	<div>
+		
+			<div class="slds-grid slds-wrap  " style="background:gainsboro;height: 44px;">
+				<div class="slds-avatar slds-avatar_circle ">
+					<lightning-icon class="slds-avatar__initials slds-avatar__initials_inverse"
+						icon-name="utility:user"></lightning-icon>
+				</div>
+				<div class="slds-m-left_small slds-m-top_xx-small">
+					<p class="slds-text-heading_small">{contactList}</p>
+				</div>
+			</div>
+		
+		<div class="container" style="overflow-y:scroll; height:150px; background-color:aliceblue;">
+		<template if:true={messageList} for:each={messageList} for:item="message" >
+			<div key={message.id} class="slds-chat-message__body"  >
+				<div if:true={message.outboundMessage} class="slds-chat-message__text slds-chat-message__text_outbound slds-m-right_x-small">
+					<span>{message.mainMessage}</span><br/>
+					
+				</div>
+				<div if:true={message.inboundMessage} class="slds-chat-message__text slds-chat-message__text_inbound slds-m-left_x-small">
+					<span>{message.mainMessage}</span><br/>
+					
+				</div>
+				<!-- <div if:true={emojis} class="slds-chat-message__text slds-chat-message__text_inbound slds-m-left_x-small">
+					<span>{emojis.laugh}</span>
+				</div>
+				 <div if:true={emojis} class="slds-chat-message__text slds-chat-message__text_outbound slds-m-left_x-small">
+					<span>{emojis.laugh}</span>
+				</div> -->
+			</div>
+		</template>	
+		</div>
+
+		<div class="slds-grid slds-wrap slds-p-left_medium slds-border_top" style="background-color: darkseagreen;height: 65px;" >
+			<div class="slds-col slds-size_9-of-12 ">
+				<lightning-input type="text" value={inputMessage} onkeypress={handleSearchInputKeyPress} 
+				placeholder="Type a Message.." onchange={getMessage}></lightning-input>
+			</div>
+			<div class="slds-col slds-size_1-of-12  slds-m-left_medium " style="margin-top:19px">
+				<lightning-icon  icon-name="utility:send" onclick={sendMessage}  ></lightning-icon>
+			</div>
+			<!-- <div if:true={messageList} class="slds-col slds-size_1-of-12 slds-m-left_xx_small" style="margin-top:19px">
+				<lightning-icon  icon-name="utility:emoji" onclick={handleEmojis} ></lightning-icon>
+			</div> -->
+		</div>
+	</div>
+</template>

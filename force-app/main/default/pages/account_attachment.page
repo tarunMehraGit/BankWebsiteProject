@@ -1,0 +1,25 @@
+<apex:page controller="AccountAttachmentController" showHeader="false" title="Account List">
+    <apex:pageBlock >
+    	<apex:pageBlockSection columns="1" collapsible="false" title="Account List">
+        	<apex:pageBlockTable value="{!accountList}" var="account">
+            	<apex:column headerValue="Account Name" value="{!account.Name}"/>
+                <apex:column headerValue="Email" value="{!account.Email__c}"/>
+                <!--<apex:column headerValue="Contact" value="{!account.Phone}"/>-->
+                <apex:column headerValue="Attachment">
+                	<apex:image url="{!$Resource.Default}" height="50px" width="50px"
+                                rendered="{!if(account.Attachments.size > 0, false, true)}"/>
+                	<apex:repeat value="{!account.Attachments}" var="attachment">
+                    	<apex:image url="{!URLFOR($Action.Attachment.Download, attachment.id)}"
+                                    rendered="{!if(attachment.Contenttype == "image/jpg" || attachment.Contenttype == "image/png",true,false)}"/> 
+                        <apex:image url="{!$Resource.Documnet}" height="70px" width="70px"
+                                    rendered="{!if(attachment.Contenttype == "application/msword",true,false)}"/>
+                        <apex:image url="{!$Resource.Excel}" height="70px" width="70px"
+                                    rendered="{!if(attachment.Contenttype == "application/vnd.ms-excel",true, false)}"/>
+                        <apex:image url="{!$Resource.PDF}" height="70px" width="70px"
+                                    rendered="{!if(attachment.Contenttype == "application/pdf", true, false)}"/>
+                    </apex:repeat>
+                </apex:column>
+              </apex:pageBlockTable>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

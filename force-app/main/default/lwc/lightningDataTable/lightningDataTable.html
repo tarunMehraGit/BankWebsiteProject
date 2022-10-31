@@ -1,0 +1,12 @@
+<template>
+    <lightning-card>
+        <!-- <template if:true={isLoader}>
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </template> -->
+        <h2 class="slds-m-bottom--x-small" style="color:darkslateblue; font-weight:bold;">Display Contact details</h2>  
+        
+        <template if:true={contactList}>
+            <lightning-datatable data={contactList} onsave={handleSave} draft-values={saveDraftValues} key-field="Id" show-row-number-column columns={columns} hide-checkbox-column></lightning-datatable>
+        </template>
+    </lightning-card>
+</template>

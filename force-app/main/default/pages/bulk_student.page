@@ -1,0 +1,24 @@
+<apex:page title="Bulk Of Student" showHeader="false" controller="StudentController">
+    <apex:sectionHeader title="Students" subtitle="Add New Student"/>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!saveRecord}"/>
+                <apex:commandButton value="Cancel" action="{!cancelButton}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Add Multiple Record" columns="1" collapsible="false">
+            	<apex:pageBlockTable value="{!addStudentList}" var="addStudent">
+                    <apex:column headerValue="First Name">
+                    	<apex:inputField value="{!addStudent.First_Name__c}" required="false"/>
+                    </apex:column>
+                    <apex:column headerValue="Last Name">
+                    	<apex:inputField value="{!addStudent.Last_Name__c}"/>
+                    </apex:column>
+                    <apex:column headervalue="Course">
+                    	<apex:inputField value="{!addStudent.Course__c}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

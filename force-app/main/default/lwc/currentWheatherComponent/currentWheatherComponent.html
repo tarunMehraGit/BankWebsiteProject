@@ -1,0 +1,54 @@
+<template>
+	<lightning-card>
+		<div if:true={isLoader}>
+			<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+		</div>
+		<div class="slds-align_absolute-center slds-p-top_large">
+			<article class="slds-card wheather-article ">
+				<div class="slds-align_absolute-center slds-p-top_medium">
+					<span class="slds-text-heading_medium">Search Weather For City</span>
+				</div>
+				<lightning-layout class="slds-align_absolute-center">
+					<lightning-layout-item size="6" padding="around-small">
+						<label class="custom-input-label">City</label>
+						<lightning-input type="text" data-id="city" onchange={getCityAndPincode} placeholder="Enter City Name" variant="label-hidden"></lightning-input>
+					</lightning-layout-item>
+					<lightning-layout-item size="6" padding="around-small">
+						<label class="custom-input-label">Pincode</label>
+						<lightning-input type="number" data-id="pincode" label="Pincode" onchange={getCityAndPincode} placeholder="Enter Pincode" variant="label-hidden"></lightning-input>
+					</lightning-layout-item>
+				</lightning-layout>
+				<lightning-layout>
+					<lightning-layout-item size="6" padding="around-small" class="slds-align_absolute-center" >
+                         <button class={submitButtonClass} onclick={handleClickSubmit}>SUBMIT</button>
+					</lightning-layout-item>
+				</lightning-layout>
+				
+				<template if:true={showWheatherData}>
+					<div class="slds-align_absolute-center slds-p-top_medium">
+						<span class="slds-text-heading_medium">Weather  Report</span>
+					</div>
+
+					<lightning-layout class="slds-align_absolute-center" >
+						<lightning-layout-item size="6" padding="around-small"> 
+							<span class="custom-label">Current Weather</span>  {description} 
+						</lightning-layout-item>
+						<lightning-layout-item size="6" padding="around-small"  >
+							<span class="custom-label">Clouds</span>  {main} 
+						</lightning-layout-item>
+					</lightning-layout>
+
+					<lightning-layout class="slds-align_absolute-center" >
+						<lightning-layout-item size="6" padding="around-small"> 
+							<span class="custom-label">Temprature</span>  {wheatherData.main.temp} C
+						</lightning-layout-item>
+						<lightning-layout-item size="6" padding="around-small"  >
+							<span class="custom-label">humidity</span>   {wheatherData.main.humidity}%
+						</lightning-layout-item>
+					</lightning-layout>
+				</template>
+			</article>
+		</div>
+
+	</lightning-card>
+</template>
