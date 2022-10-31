@@ -9,7 +9,7 @@ export default class GoogleTranslateComp extends LightningElement {
   get options() {
     return [
       { label: 'Hindi', value: 'hi' },
-      { label: 'English', value: 'En' },
+      { label: 'English', value: 'En' }, 
       { label: 'Gujarati', value: 'guj' },
       { label: 'Punjabi', value: 'pa' },
       { label: 'Russian', value: 'rus' }
