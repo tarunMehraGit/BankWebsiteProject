@@ -1,0 +1,181 @@
+
+
+    Story --> RC Limit & Upload of previous PDD Documents
+
+    working on GLS-959 
+
+    Types Of RC Limit --> Lead Object
+
+    1. Branch RC limit
+
+        Whenever user select Branch RC limit then display rupee value and count asset.
+
+        A. Branch RC limit Consumed -- input 
+
+            display Branch RC limit which have been consumed.
+
+            This shall be a rupee value and a count of asset
+
+        B. Branch RC limit Balance -- input
+
+            display the remaining amount available for the RC limit.
+
+            rupee value and a count of asset.
+
+        C. If the branch does not have a RC limit, Dealer RC limit, Express RC limit shall not be displayed in the system.
+
+
+    2.  Dealer RC limit
+
+        A. Applicable if source is used dealer. If the selected dealer has no RC limit, this section shall not be displayed.
+
+        B. Dealer RC limit --> 
+            a. displayed if the dealer has RC limit 
+            b. This shall be a rupee value and a count of asset.
+
+        C. Dealer RC limit Consumed --> 
+            a. display the dealer RC limit which have been consumed.
+            b. a rupee value and a count of asset
+
+        D. Dealer RC limit Balance -->  
+            a. display the remaining amount available for the RC limit.
+            b. a rupee value and a count of asset.
+
+    3. Express RC limit
+
+        A. Express RC limit -->
+            a. displayed if the branch selected has RC limit.
+            b. a rupee value and a count of asset.
+
+        B. Express RC limit Consumed -->
+            a. display the express RC limit which have been consumed.
+            b. a rupee value and a count of asset.
+
+        C. Express RC limit Balance -->
+            a. display the remaining amount available for the RC limit.
+            b. rupee value and count of asset.
+
+
+            UserOTPAuthentication_sls
+            OnRoadPriceNetOfDiscountSales__c
+            On_Road_Price_Net_Of_Discount_Sales
+
+
+
+
+            MultiBulkCrossSellController_sls = 100%
+            MultiBulkCrossSellControllerTest_sls
+
+
+            RatePricingAndEMIController_sls = 92%
+            RatePricingAndEMIController_sls_Test
+
+
+            LifeInsuranceDetailsController_sls  = 91%
+            LifeInsuranceDetailsControllerTest_sls
+
+
+            CrossSellAssetController_sls = 90%
+            CrossSellAssetController_sls_Test
+
+
+            LifeInsuranceController_sls = 85%
+            LifeInsuranceControllerTest_sls
+
+
+            ApplicationSummaryAndTC_sls = 80%
+            ApplicationSummaryAndTC_sls_Test
+
+
+            EditNomineeDetailsController_sls  = 98%
+            EditNomineeDetailsControllerTest_sls
+
+            
+            AssetAndLoanDetailController_sls = 80%
+            AssetAndLoanDetailController_sls_Test
+
+            DealerAndDeliveryController_sls = 85%
+            DealerAndDeliveryCntroller_sls_Test
+
+            CapturingLoanDetailsController_sls = 89%
+            CapturingLoanDetailsController_sls_Test 
+
+
+            Not Deployed
+
+            BureauCreditScoreRerunController_sls = 28% 
+            BureauCreditScoreRerunControllerTest_sls
+
+
+            CustomerConsentController_sls     =  78%
+            CustomerConsentControllerTest_sls
+
+        Party__c par : [SELECT Id, ApplicantType__c, Name__c FROM Party__c WHERE Loan_Details__c = 'a0DC10000000CafMAE'
+
+        https://chola--dev18.sandbox.my.site.com/cc/customer-otp
+
+        https://chola--dev24.sandbox.my.site.com/cc/s/customer-otp
+
+
+    Date : 27-April-2022
+       
+    New Story - GLS-1621
+
+        1. Customer age limit 18 To 65 years 
+
+        2. Update Premium detils on verification screen.
+
+            1. Premium.
+            2. Sum Assured.
+            3. Tenure.
+
+        3. On verification screen k upar (signature uplaod ka option based on insurer)doubt  
+
+        4. get signed from customer and must be the signature of customer OTP Based
+
+        5. signature is system mai captured hona chahiye.
+
+        6. Cross sell screen pr proceed button.
+
+        7. Whenver customer is not interested so we have option to skip the OTP.
+
+        8. OTP Message .....
+
+
+        
+
+
+        J 7 5 j 96 u n 0 ] $ K + % 
+
+        .\dadm_21_a
+
+
+
+        New Story --> 1008
+
+            Name --> Option for Bulk/Multiple WorkFlow
+
+        1. Applicable for New & Used Asset Type.
+
+        2. Objects -> Lead__c, Asset_Details__c, Loan__c, Insurance__c
+
+        2.Modules
+
+            1. Customer categorization
+
+                1. Asset Type --> 1. Asset group level, 2. Asset level
+                2. Customer category selected of each asset group
+
+            2. Model Decisioning
+
+                1. Asset Type --> 1. Lead Level, 2.Lead Level
+
+
+
+
+
+
+
+
+
+        
